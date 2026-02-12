@@ -391,7 +391,6 @@ An **alert** is any prompt or LLM response with `risk_score >= 3`.
 ### Policy Enforcement Flow
 
 1. **Prompt Level**: User submits a prompt
-
    - Policy checks the prompt's risk_score
    - If `risk_score >= 3` → May set `action = "blocked"`
    - Blocked prompts don't get sent to the LLM
@@ -536,8 +535,8 @@ The backend acts as a **BFF (Backend-for-Frontend) / API proxy**. The external W
 
 ```
 ┌─────────────┐      ┌──────────────────┐      ┌─────────────────────┐
-│   Frontend  │ ───► │  NestJS Backend   │ ───► │  Witness AI API     │
-│ (e.g. 5173) │      │  (localhost:3000) │      │  (fly.dev)          │
+│   Frontend  │ ───► │  NestJS Backend  │ ───► │   Witness AI API    │
+│ (e.g. 5173) │      │ (localhost:3000) │      │     (fly.dev)       │
 └─────────────┘      └──────────────────┘      └─────────────────────┘
 ```
 
@@ -545,12 +544,12 @@ The backend acts as a **BFF (Backend-for-Frontend) / API proxy**. The external W
 
 Domain-driven modules mirror the API resources:
 
-| Module        | Path                              | Responsibility                    |
-|---------------|-----------------------------------|-----------------------------------|
-| Conversations | `src/conversations/`              | List/get conversations            |
-| Prompts       | `src/prompts/`                    | List/get prompts, LLM responses   |
-| Users         | `src/users/`                      | List/get users                    |
-| Policies      | `src/policies/`                   | List/get policies                 |
+| Module        | Path                 | Responsibility                  |
+| ------------- | -------------------- | ------------------------------- |
+| Conversations | `src/conversations/` | List/get conversations          |
+| Prompts       | `src/prompts/`       | List/get prompts, LLM responses |
+| Users         | `src/users/`         | List/get users                  |
+| Policies      | `src/policies/`      | List/get policies               |
 
 Each module contains:
 
@@ -610,11 +609,11 @@ Upstream errors are caught in controllers via `catchError` on the Axios observab
 
 ### Environment Variables
 
-| Variable       | Description                         |
-|----------------|-------------------------------------|
+| Variable       | Description                                                 |
+| -------------- | ----------------------------------------------------------- |
 | `API_BASE_URL` | Upstream API (e.g. `https://frontend-takehome.fly.dev/api`) |
-| `CORS_ORIGIN`  | Allowed frontend origin (e.g. `http://localhost:5173`)       |
-| `PORT`         | Server port (default: 3000)         |
+| `CORS_ORIGIN`  | Allowed frontend origin (e.g. `http://localhost:5173`)      |
+| `PORT`         | Server port (default: 3000)                                 |
 
 ---
 
