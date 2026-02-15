@@ -1,5 +1,7 @@
 # WitnessAI Backend
 
+Check it out: https://witnessai.onrender.com/api
+
 ## Architecture & Implementation
 
 This section documents the architectural decisions and implementation details of the backend API.
